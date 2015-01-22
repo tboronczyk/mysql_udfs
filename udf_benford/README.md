@@ -16,12 +16,12 @@ Installation (Ubuntu 14.04):
 
     sudo apt-get install libmysqlclient-dev
 
-    cd udf_benford/src
-    gcc -fPIC -shared -o udf_benford.so -I../include udf_benford.c \
-      $(mysql_config --cflags) $(mysql_config --libs)
+    autoreconf --install
+    ./configure
+    make
 
     # SHOW GLOBAL VARIABLES LIKE 'plugin_dir' for plugin directory
-    sudo cp udf_benford.so /usr/lib/mysql/plugin
+    sudo cp src/.libs/udf_benford.so /usr/lib/mysql/plugin
 
     sudo chown root:root /usr/lib/mysql/plugin/udf_benford.so
     sudo chmod 644 /usr/lib/mysql/plugin/udf_benford.so
