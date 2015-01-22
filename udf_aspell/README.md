@@ -20,8 +20,9 @@ Installation (Ubuntu 14.04):
 
     sudo apt-get install libmysqlclient-dev libaspell-dev
 
-    gcc -fPIC -shared -o udf_aspell.so -DLANGUAGE=\"$LANG\" udf_aspell.c \
-      -laspell $(mysql_config --cflags) $(mysql_config --libs)
+    cd udf_aspell/src
+    gcc -fPIC -shared -o udf_aspell.so -DLANGUAGE=\"$LANG\" -I../include \
+      udf_aspell.c -laspell $(mysql_config --cflags) $(mysql_config --libs)
 
     # SHOW GLOBAL VARIABLES LIKE 'plugin_dir' for plugin directory
     sudo cp udf_aspell.so /usr/lib/mysql/plugin

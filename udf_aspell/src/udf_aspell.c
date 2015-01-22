@@ -1,14 +1,6 @@
 #include <string.h>
 #include "aspell.h"
-#include "mysql.h"
-
-#ifndef LANGUAGE
-#define LANGUAGE "en_US"
-#endif
-
-my_bool aspell_check_init(UDF_INIT *, UDF_ARGS *, char *);
-void aspell_check_deinit(UDF_INIT *);
-char *aspell_check(UDF_INIT *, UDF_ARGS *, char *, unsigned long *, char *, char *);
+#include "udf_aspell.h"
 
 my_bool aspell_check_init(UDF_INIT *initid, UDF_ARGS *args, char *message)
 {

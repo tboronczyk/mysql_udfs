@@ -16,7 +16,8 @@ Installation (Ubuntu 14.04):
 
     sudo apt-get install libmysqlclient-dev
 
-    gcc -fPIC -shared -o udf_benford.so udf_benford.c \
+    cd udf_benford/src
+    gcc -fPIC -shared -o udf_benford.so -I../include udf_benford.c \
       $(mysql_config --cflags) $(mysql_config --libs)
 
     # SHOW GLOBAL VARIABLES LIKE 'plugin_dir' for plugin directory
